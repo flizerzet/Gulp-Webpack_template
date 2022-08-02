@@ -1,0 +1,25 @@
+// Общие классы
+
+/*===========================================*/
+._ibg {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+/*===========================================*/
+[data-fullscreen] {
+	min-height: 100vh;
+	.touch & {
+		min-height: calc(var(--vh, 1vh) * 100);
+		@media (max-width: em(576)) {
+			transition: height 0.2s;
+		}
+	}
+}
+/*===========================================*/

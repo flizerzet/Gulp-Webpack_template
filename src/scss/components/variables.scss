@@ -1,0 +1,15 @@
+//---Шрифт по умолчанию
+$fontFamily: "";
+$fontWeight: 400;
+
+//---РАЗМЕРЫ---===============================
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1440;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1280;
+// Отступ безопасности
+$containerPadding: 30;
+
+$containerWidth: $maxWidthContainer + $containerPadding;

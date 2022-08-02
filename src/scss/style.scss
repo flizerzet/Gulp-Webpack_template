@@ -1,0 +1,122 @@
+@use "sass:math";
+
+//---МИКСИНЫ---===============================
+@import "components/mixins";
+
+//---ШРИФТЫ---===============================
+
+// @import 'components/fonts';
+//&display=swap
+
+//---Иконочный шрифт
+// @import 'components/icons';
+
+//---SCSS ПЕРЕМЕННЫЕ---===============================
+@import 'components/variables';
+
+//---CSS ПЕРЕМЕННЫЕ---===============================
+:root {}
+
+//---Обнуление
+@import "components/nullstyle";
+
+//---Цветовая схема и страница
+// @import 'components/color-scheme';
+
+body {
+	font-family: $fontFamily, sans-serif;
+	font-weight: $fontWeight;
+
+	transition: background-color .2s, color .2s;
+
+	background-color: var(--bg-color);
+	color: var(--text-color);
+
+	// Блокировка скролла
+	&._locked {
+		overflow: hidden;
+		touch-action: none;
+	}
+}
+
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	// Для слайдеров
+	> * {
+		min-width: 0;
+	}
+}
+
+[class*="__container"] {
+	@if ($maxWidthContainer > 0) {
+		max-width: $containerWidth + px;
+	} @else {
+		width: 100%;
+	}
+	margin: 0 auto;
+	padding: 0 math.div($containerPadding, 2) + px;
+}
+
+/*===========================================*/
+//---Дополнительные стили
+
+//---Общие классы
+// @import 'components/common';
+
+/*===========================================*/
+//---Элементы
+
+//---Модальные окна
+// @import 'elements/modals';
+
+//---Табы
+// @import 'elements/tabs';
+
+//---Show more
+// @import 'elements/showmore';
+
+//---Spollers
+// @import 'elements/spollers';
+
+//---Swiper
+// @import 'elements/swiper';
+
+//---Range Input
+// @import 'elements/inputs';
+
+//---Selects
+// @import 'elements/selects';
+
+//---Star rating
+// @import 'elements/rating';
+
+//---Counter
+// @import 'elements/counter';
+
+//---Switcher
+// @import 'elements/switcher';
+
+/*===========================================*/
+//---Header
+
+@import "components/header";
+
+/*===========================================*/
+
+.page {
+	flex: 1 1 auto;
+	padding: 20px 0;
+}
+
+@import "components/index";
+
+/*===========================================*/
+//---Footer
+
+@import "components/footer";
+
+/*===========================================*/

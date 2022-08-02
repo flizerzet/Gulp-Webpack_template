@@ -1,0 +1,70 @@
+.switcher {
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	padding: 2px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	border: none;
+	// .switcher__legend
+	&__legend {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
+	// .switcher__radio
+	&__radio {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 32px;
+		height: 32px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 24px;
+		transition: filter .1s;
+		&:focus {
+			outline: none;
+		}
+		&:focus-visible ~ .switcher__status {
+			box-shadow: 0 0 0 2px black;
+		}
+	}
+	// .switcher__radio--light
+	&__radio--light {
+		background-image: url('../img/switcher/light.svg');
+		&:checked ~ .switcher__status {
+			background-position: left 2px center;
+		}
+	}
+	// .switcher__radio--auto
+	&__radio--auto {
+		background-image: url('../img/switcher/auto.svg');
+		&:checked ~ .switcher__status {
+			background-position: center center;
+		}
+	}
+	// .switcher__radio--dark
+	&__radio--dark {
+		background-image: url('../img/switcher/dark.svg');
+		&:checked ~ .switcher__status {
+			background-position: right 2px center;
+		}
+	}
+	// .switcher__status
+	&__status {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+		border-radius: 18px;
+		box-shadow: 0 0 0 2px rgba(0,0,0,.2);
+		background-color: rgba(255, 255, 255, .5);
+		background-repeat: no-repeat;
+		background-image: url('../img/switcher/status.svg');
+		background-size: 32px;
+		background-position: center;
+		transition: background-position .2s;
+	}
+}

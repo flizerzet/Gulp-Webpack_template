@@ -1,0 +1,108 @@
+// Коды миксинов
+
+// Подключение шрифта
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff2") format("woff2");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+
+// Адаптивное свойство (clamp)
+@mixin adaptive-value($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
+	@if ($startSize==0) {
+		$startSize: 0.000001;
+	}
+	@if ($minSize==0) {
+		$minSize: 0.000001;
+	}
+
+	// Для calc();
+	$addSize: math.div($startSize - $minSize, 16);
+
+	@if ($widthFrom == $containerWidth and $maxWidthContainer == 0) {
+		$widthFrom: $maxWidth;
+	}
+
+	// Брейк-поинты в EM
+	$widthFromMedia: em($widthFrom);
+	$widthToMedia: em($widthTo);
+
+	// Формула плавающего значения
+	// Источник: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+	$slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+	$yIntersection: -$widthTo * $slope + $minSize;
+	@if ($yIntersection==0) {
+		$yIntersection: 0.000001;
+	}
+	$flyValue: #{rem($yIntersection)}" + " #{$slope * 100}vw;
+
+	// Получение значения свойства
+	$propertyValue: #{"clamp(" rem($minSize) "," $flyValue "," rem($startSize) ")"};
+	// Если отрицательные значения
+	@if ($minSize > $startSize) {
+		$propertyValue: #{"clamp(" rem($startSize) "," $flyValue "," rem($minSize) ")"};
+	}
+
+	// Если поддерживается clamp();
+	@supports (#{$property}: $propertyValue) {
+		#{$property}: $propertyValue;
+	}
+	// Если не поддерживается clamp();
+	@supports not (#{$property}: $propertyValue) {
+		#{$property}: calc(
+			#{rem($minSize)} + #{$addSize} * (100vw - #{rem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)}
+		);
+	}
+
+	// Устанавливаем значения по умолчанию
+	@if $widthFrom != $containerWidth and $widthFrom != $maxWidth and $keepSize != 1 and $keepSize != 2 {
+		@media (min-width: $widthFromMedia) {
+			#{$property}: inherit;
+		}
+	}
+	@if $widthTo != $minWidth and $keepSize != 1 and $keepSize != 3 {
+		@media (max-width: $widthToMedia) {
+			#{$property}: inherit;
+		}
+	}
+}
+
+//Четырехугольник
+@mixin rect($width, $height, $isCircle, $isFlex) {
+	height: $height + px;
+
+	@if $isFlex == 1 {
+		flex: 0 0 $width + px;
+	} @else {
+		width: $width + px;
+	}
+
+	@if $isCircle == 1 {
+		border-radius: 50%;
+	} @else {
+		border-radius: none;
+	}
+}
+
+// Grid-карточки
+@mixin grid-сard($min: 280px, $max: 1fr, $gap: 30px) {
+	display: grid;
+	gap: $gap;
+	grid-template-columns: repeat(auto-fit, minmax(min($min, 100%), $max));
+}
+
+// Ограничивание текста...
+@mixin hide-text($lines: 1) {
+	display: -webkit-box;
+	-webkit-line-clamp: $lines;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	@if $lines == 1 {
+		white-space: nowrap;
+	}
+}

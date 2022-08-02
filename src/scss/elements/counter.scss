@@ -1,0 +1,28 @@
+.counter {
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+	div {
+		flex: 0 0 60px;
+		text-align: center;
+	}
+	// .counter__button
+	&__button {
+		cursor: pointer;
+		// .counter__button_plus
+		&_plus {
+		}
+		// .counter__button_minus
+		&_minus {
+		}
+	}
+	// .counter__input
+	&__input {
+		input {
+			width: 100%;
+			background-color: #fff;
+			text-align: center;
+		}
+	}
+}
+

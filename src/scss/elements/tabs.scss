@@ -1,0 +1,11 @@
+._tabs {
+}
+._tabs-link {
+	cursor: pointer;
+}
+._tabs-content {
+	display: none;
+	&._active {
+		display: block;
+	}
+}

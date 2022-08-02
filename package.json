@@ -1,0 +1,49 @@
+{
+	"name": "prokashevdev-template",
+	"version": "2.1.0",
+	"description": "Start template with Gulp and Webpack",
+	"author": "Prokashev Daniil",
+	"private": true,
+	"license": "GNU General Public License (GPL)",
+	"type": "module",
+	"scripts": {
+		"dev": "gulp && webpack --progress -c config/webpack.config.js",
+		"build": "gulp build",
+		"buildWebp": "gulp buildWebp"
+	},
+	"devDependencies": {
+		"browser-sync": "^2.27.7",
+		"del": "latest",
+		"gulp": "latest",
+		"gulp-autoprefixer": "latest",
+		"gulp-clean": "^0.4.0",
+		"gulp-clean-css": "latest",
+		"gulp-file-include": "^2.3.0",
+		"gulp-group-css-media-queries": "latest",
+		"gulp-image": "^6.3.1",
+		"gulp-imagemin": "latest",
+		"gulp-newer": "latest",
+		"gulp-notify": "^4.0.0",
+		"gulp-plumber": "latest",
+		"gulp-rename": "latest",
+		"gulp-sass": "^5.0.0",
+		"gulp-ttf2woff": "latest",
+		"gulp-ttf2woff2": "latest",
+		"gulp-uglify-es": "latest",
+		"gulp-version-number": "latest",
+		"gulp-webp-html-nosvg": "latest",
+		"gulp-webpcss": "latest",
+		"imagemin-webp": "latest",
+		"sass": "^1.44.0",
+		"string-replace-loader": "^3.1.0",
+		"terser-webpack-plugin": "latest",
+		"transform-runtime": "0.0.0",
+		"webp-converter": "2.2.3",
+		"webpack": "latest",
+		"webpack-cli": "latest",
+		"webpack-stream": "latest"
+	},
+	"dependencies": {
+		"smoothscroll-polyfill": "^0.4.4"
+	}
+}
