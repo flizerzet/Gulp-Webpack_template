@@ -6,11 +6,6 @@
 import * as modules from './components/modules.js'
 
 /*===========================================*/
-//--- Учет плавающей панели на мобильных устройствах
-
-// modules.fullVHFix()
-
-/*===========================================*/
 //---Smooth scroll to an anchor
 
 // import smoothscroll from 'smoothscroll-polyfill';

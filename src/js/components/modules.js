@@ -61,20 +61,6 @@ let isMobile = {
 	});
 })();
 
-//---Учет плавающей панели на мобильных устройствах при 100vh
-
-export function fullVHFix() {
-	const fullScreens = document.querySelectorAll('[data-fullscreen]');
-	if (fullScreens.length && isMobile.any()) {
-		window.addEventListener('resize', fixHeight);
-		function fixHeight() {
-			let vh = window.innerHeight * 0.01;
-			document.documentElement.style.setProperty('--vh', `${vh}px`);
-		}
-		fixHeight();
-	}
-}
-
 //---Smooth scroll
 
 export function smoothScroll() {
