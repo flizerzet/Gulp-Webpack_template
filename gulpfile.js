@@ -6,7 +6,7 @@ import fileInclude from 'gulp-file-include';
 import autoprefixer from 'gulp-autoprefixer';
 import group_media from 'gulp-group-css-media-queries';
 import plumber from 'gulp-plumber';
-import del from 'del';
+import {deleteAsync} from 'del';
 import minRename from 'gulp-rename';
 import cleanCss from 'gulp-clean-css';
 import newer from 'gulp-newer';
@@ -264,7 +264,7 @@ function fontStyle() {
 
 // Дополнительные функции
 function clean() {
-	return del(app.clean);
+	return deleteAsync(app.clean);
 }
 
 // Вспомогательная функция
@@ -313,11 +313,11 @@ function watchFiles() {
 let fontsBuild = gulp.series(fonts, fontStyle);
 let dev = gulp.series(clean, gulp.parallel(html, fonts, js, images, icons, assets), fontStyle, css, watchFiles);
 let build = gulp.series(cleanDir, gulp.parallel(html, jsDev, js, fonts, imagesBuild, icons, assets), css);
-let buildWebp = gulp.series(cleanDir, gulp.parallel(htmlWebp, jsDev, js, fonts, imagesWebp, icons, assets), cssWebp);
+let buildNoWebp = gulp.series(cleanDir, gulp.parallel(htmlWebp, jsDev, js, fonts, imagesWebp, icons, assets), cssWebp);
 
 gulp.task('clean', cleanDir)
 gulp.task('fonts', fontsBuild);
 
 gulp.task('default', dev);
 gulp.task('build', build);
-gulp.task('buildWebp', buildWebp);
+gulp.task('buildNoWebp', buildNoWebp);
