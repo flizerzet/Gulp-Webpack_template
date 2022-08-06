@@ -1,26 +1,29 @@
 @use "sass:math";
 
-//---МИКСИНЫ---===============================
+//---МИКСИНЫ---//
 @import "components/mixins";
 
-//---ШРИФТЫ---===============================
+/*---ШРИФТЫ---*/
 
 // @import 'components/fonts';
 //&display=swap
 
-//---Иконочный шрифт
+//---Иконочный шрифт---*/
 // @import 'components/icons';
 
-//---SCSS ПЕРЕМЕННЫЕ---===============================
-@import 'components/variables';
-
-//---CSS ПЕРЕМЕННЫЕ---===============================
-:root {}
-
-//---Обнуление
+/*---ОБНУЛЕНИЕ---*/
 @import "components/nullstyle";
 
-//---Цветовая схема и страница
+//---SCSS ПЕРЕМЕННЫЕ---
+@import 'components/variables';
+
+/*---CSS ПЕРЕМЕННЫЕ---*/
+:root {
+	--bg-color: #fff;
+	--text-color: #000;
+}
+
+/*---ЦВЕТОВАЯ СХЕМА И СТРАНИЦА---*/
 // @import 'components/color-scheme';
 
 body {
@@ -61,62 +64,61 @@ body {
 	padding: 0 math.div($containerPadding, 2) + px;
 }
 
-/*===========================================*/
+//===========================================//
 //---Дополнительные стили
 
-//---Общие классы
-// @import 'components/common';
+/*---ОБЩИЕ КЛАССЫ---*/
+@import 'components/common';
 
-/*===========================================*/
+//===========================================//
 //---Элементы
 
-//---Модальные окна
+//---МОДАЛЬНЫЕ ОКНА---*/
 // @import 'elements/modals';
 
-//---Табы
+//---ТАБЫ---*/
 // @import 'elements/tabs';
 
-//---Show more
+//---SHOW MORE---*/
 // @import 'elements/showmore';
 
-//---Spollers
+//---SPOLLERS---*/
 // @import 'elements/spollers';
 
-//---Swiper
+//---SWIPER---*/
 // @import 'elements/swiper';
 
-//---Range Input
+//---RANGE INPUT---*/
 // @import 'elements/inputs';
 
-//---Selects
+//---SELECTS---*/
 // @import 'elements/selects';
 
-//---Star rating
+//---STAR RATING---*/
 // @import 'elements/rating';
 
-//---Counter
+//---COUNTER---*/
 // @import 'elements/counter';
 
-//---Switcher
+//---SWITCHER---*/
 // @import 'elements/switcher';
 
-/*===========================================*/
-//---Header
+//==========================================//
+/*---Header---*/
 
 @import "components/header";
 
-/*===========================================*/
+//===========================================//
 
-.page {
+/*---Стили страницы---*/
+
+.main {
 	flex: 1 1 auto;
-	padding: 20px 0;
 }
 
-@import "components/index";
-
-/*===========================================*/
-//---Footer
+//===========================================//
+/*---Footer---*/
 
 @import "components/footer";
 
-/*===========================================*/
+//===========================================//
