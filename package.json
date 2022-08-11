@@ -9,7 +9,7 @@
 	"scripts": {
 		"dev": "gulp && webpack --progress -c config/webpack.config.js",
 		"build": "gulp build",
-		"buildWebp": "gulp buildWebp"
+		"buildNoWebp": "gulp buildNoWebp"
 	},
 	"devDependencies": {
 		"browser-sync": "^2.27.7",

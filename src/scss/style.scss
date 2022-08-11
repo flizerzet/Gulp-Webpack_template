@@ -24,7 +24,7 @@
 }
 
 /*---ЦВЕТОВАЯ СХЕМА И СТРАНИЦА---*/
-// @import 'components/color-scheme';
+@import 'components/color-scheme';
 
 body {
 	font-family: $fontFamily, sans-serif;
@@ -73,34 +73,34 @@ body {
 //===========================================//
 //---Элементы
 
-//---МОДАЛЬНЫЕ ОКНА---*/
+//---МОДАЛЬНЫЕ ОКНА
 // @import 'elements/modals';
 
-//---ТАБЫ---*/
+//---ТАБЫ
 // @import 'elements/tabs';
 
-//---SHOW MORE---*/
+//---SHOW MORE
 // @import 'elements/showmore';
 
-//---SPOLLERS---*/
+//---SPOLLERS
 // @import 'elements/spollers';
 
-//---SWIPER---*/
+//---SWIPER
 // @import 'elements/swiper';
 
-//---RANGE INPUT---*/
-// @import 'elements/inputs';
+//---RANGE INPUT
+// @import 'elements/range';
 
-//---SELECTS---*/
+//---SELECTS
 // @import 'elements/selects';
 
-//---STAR RATING---*/
+//---STAR RATING
 // @import 'elements/rating';
 
-//---COUNTER---*/
+//---COUNTER
 // @import 'elements/counter';
 
-//---SWITCHER---*/
+//---SWITCHER
 // @import 'elements/switcher';
 
 //==========================================//
