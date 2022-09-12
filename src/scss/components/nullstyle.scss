@@ -33,6 +33,7 @@ input,
 button,
 textarea {
 	font-family: inherit;
+	font-size: inherit;
 }
 
 input::-ms-clear {
@@ -88,4 +89,15 @@ input[type=text], input[type=email], input[type=password] {
 	&:focus::placeholder {
 		color: transparent;
 	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
