@@ -50,7 +50,7 @@ const app = {
 		js: `${srcFolder}/js/app.js`,
 		css: `${srcFolder}/scss/style.scss`,
 		images: [`${srcFolder}/img/**/*.{jpg,jpeg,png,gif,webp}`, "!**/favicon.*"],
-		icons: [`${srcFolder}/img/**/*.svg`, "!**/favicon.*"],
+		icons: [`${srcFolder}/img/**/*.svg`, `${srcFolder}/img/**/favicon.*`],
 		fonts: `${srcFolder}/fonts/*.ttf`,
 		assets: `${srcFolder}/assets/**/*.*`,
 	},
@@ -59,7 +59,7 @@ const app = {
 		css: `${srcFolder}/scss/**/*.scss`,
 		js: `${srcFolder}/js/**/*.js`,
 		images: [`${srcFolder}/img/**/*.{jpg,png,jpeg,svg,gif,webp}`, "!**/favicon.*"],
-		icons: [`${srcFolder}/img/**/*.svg`, "!**/favicon.*"],
+		icons: [`${srcFolder}/img/**/*.svg`, `${srcFolder}/img/**/favicon.*`],
 		fonts: `${srcFolder}/fonts/*.ttf`,
 		assets: `${srcFolder}/assets/**/*.*`,
 	},
@@ -312,8 +312,8 @@ function watchFiles() {
 
 let fontsBuild = gulp.series(fonts, fontStyle);
 let dev = gulp.series(clean, gulp.parallel(html, fonts, js, images, icons, assets), fontStyle, css, watchFiles);
-let build = gulp.series(cleanDir, gulp.parallel(html, jsDev, js, fonts, imagesBuild, icons, assets), css);
-let buildNoWebp = gulp.series(cleanDir, gulp.parallel(htmlWebp, jsDev, js, fonts, imagesWebp, icons, assets), cssWebp);
+let buildNoWebp = gulp.series(cleanDir, gulp.parallel(html, jsDev, js, fonts, imagesBuild, icons, assets), css);
+let build = gulp.series(cleanDir, gulp.parallel(htmlWebp, jsDev, js, fonts, imagesWebp, icons, assets), cssWebp);
 
 gulp.task('clean', cleanDir)
 gulp.task('fonts', fontsBuild);
