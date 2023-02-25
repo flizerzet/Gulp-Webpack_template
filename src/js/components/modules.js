@@ -148,46 +148,56 @@ export function menuInit() {
 
 //---Modals
 
-export function modalsInit() {
-	const modalBtns = document.querySelectorAll('._modal-open');
-	const modals = document.querySelectorAll('._modal');
+export class Modal {
+	constructor(selector, triggers) {
+		this.modal = document.querySelector(selector);
+		this.triggers = document.querySelectorAll(triggers) || null;
 
-	function openModal(elem) {
-		elem.classList.add('_active');
-		body.classList.add('_locked')
+		this.modal.classList.add('_modal-init');
+
+		this.triggerOpen()
+		this.closeOnEsc()
+		this.closeOnEmptySpace()
+
+		this.init()
 	}
 
-	function closeModal(e) {
-		if (e.target.classList.contains('modal-close') || e.target.closest('.modal-close') || e.target.classList.contains('modal-bg')) {
-			e.target.closest('._modal').classList.remove('_active');
-			body.classList.remove('_locked')
-		}
+	init() {
+		console.log(`Modal initialised: ${this.modal.classList}`)
 	}
 
-	modalBtns.forEach(btn => {
-		btn.addEventListener('click', (e) => {
-			let data = e.target.dataset.modalOpen;
+	open() {
+		this.modal.classList.add('_active')
+		document.body.classList.add('_locked')
+	}
 
-			modals.forEach(modal => {
-				if (modal.dataset.modal == data || modal.dataset.modal == e.target.closest('._modal-open').dataset.modalOpen) {
-					openModal(modal)
-				}
-			})
+	close() {
+		this.modal.classList.remove('_active')
+		document.body.classList.remove('_locked')
+	}
+
+	triggerOpen() {
+		this.triggers.forEach(trigger => {
+			trigger.addEventListener('click', () => this.open())
 		})
-	})
+	}
 
-	modals.forEach(modal => {
-		modal.addEventListener('click', e => closeModal(e))
-	})
-
-	window.addEventListener('keydown', e => {
-		modals.forEach(modal => {
-			if (e.key === "Escape" && modal.classList.contains('_active')) {
-				modal.classList.remove('_active');
-				body.classList.remove('_locked');
+	closeOnEsc() {
+		window.addEventListener('keydown', e => {
+			if (e.key === "Escape" && this.modal.classList.contains('_active')) {
+				this.close()
 			}
 		})
-	})
+	}
+
+	closeOnEmptySpace() {
+		this.modal.addEventListener('click', e => {
+			if (e.target.classList.contains('modal-close') || e.target.closest('.modal-close') || e.target.classList.contains('modal-bg')) {
+				this.modal.classList.remove('_active');
+				document.body.classList.remove('_locked');
+			}
+		})
+	}
 }
 
 //---Spoilers

@@ -22,11 +22,6 @@ import * as modules from './components/modules.js'
 // modules.menuInit();
 
 /*===========================================*/
-//---Modal window
-
-// modules.modalsInit();
-
-/*===========================================*/
 //---Spoilers
 
 // Для родителя слойлеров пишем атрибут data-spollers
